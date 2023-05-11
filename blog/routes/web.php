@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
+use App\Models\Archivo;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,8 +64,11 @@ Route::get('/federico/cache/{prueba}', function($prueba){
     });
 
     return view('federico', array(//aca ya mostramos con view el archivo blade con el array con las variables que vamos a pasar por post a ese archivo que en este caso es la variable $archivo que nos trae el cache
-        'tabla' => $archivo,
+        'tabla' => $archivo, // podria simplificar el array con ['tabla':$archivo]
 ));
-
-
 })->where('prueba', '[A-z_\-]+');
+
+Route::get('/federico/cacheymodelo/{clase}', function($clase) {
+        $archivo = Archivo::hallar($clase);//Uso una clase modelo para realizar la busqueda de archivo a arriba hago manualmente
+        return view('federico', ['tabla' => $archivo,]);
+});
