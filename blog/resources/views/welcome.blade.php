@@ -14,11 +14,10 @@
     </head>
     <body class="">
         <?php foreach ($tablas as $tabla) : 
-            ddd($tablas);
+            //ddd($tablas);
             ?>
             <article>
-                hola
-                <? $tabla ?>
+                <?php echo $tabla; ?>
             </article>
            
        <?php endforeach ?>
