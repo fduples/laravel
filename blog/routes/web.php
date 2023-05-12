@@ -16,9 +16,16 @@ use App\Models\Archivo;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $archivos = Archivo::todos();
+    return view('welcome', ['tablas' => $archivos]);
 });
 
+Route::get('/federico/{clase}', function($clase) {
+    $archivo = Archivo::hallar($clase);//Uso una clase modelo para realizar la busqueda de archivo a arriba hago manualmente
+    return view('federico', ['tabla' => $archivo,]);
+});
+
+/*
 Route::get('/federico', function() {
     return view('federico');
 });
@@ -29,6 +36,7 @@ Route::get('/federico', function() {
         'primero' => '<h3>Ahora si gatos</h3>',
     ));
 });
+
 
 Route::get('/federico/{nivel}', function($nivel) {
     $path = __DIR__ . "/../resources/archivos/{$nivel}.html";
@@ -67,8 +75,4 @@ Route::get('/federico/cache/{prueba}', function($prueba){
         'tabla' => $archivo, // podria simplificar el array con ['tabla':$archivo]
 ));
 })->where('prueba', '[A-z_\-]+');
-
-Route::get('/federico/cacheymodelo/{clase}', function($clase) {
-        $archivo = Archivo::hallar($clase);//Uso una clase modelo para realizar la busqueda de archivo a arriba hago manualmente
-        return view('federico', ['tabla' => $archivo,]);
-});
+*/

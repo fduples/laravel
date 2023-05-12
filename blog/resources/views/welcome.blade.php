@@ -13,10 +13,16 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body class="">
-        <div>
-            <h3 class="hola">Hola inicio</h3>
-        </div>
-        <a href="/federico">Fede</a>
+        <?php foreach ($tablas as $tabla) : 
+            ddd($tablas);
+            ?>
+            <article>
+                hola
+                <? $tabla ?>
+            </article>
+           
+       <?php endforeach ?>
+        
         
     </body>
 </html>
